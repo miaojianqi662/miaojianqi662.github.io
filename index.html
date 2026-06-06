@@ -1,42 +1,95 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<标题>纯净电脑工具分享站</标题>
-<style>
-*{margin:0;padding:0;font-family:"微软雅黑";box-sizing:border-box;}
-主体{最大宽度:920像素;外边距:40像素 自动;内边距:0 20像素;}
-h1{text-align:center;color:#111;margin-bottom:40px;}
-.项{边框:1px 实线 #e5e7eb;圆角半径:10px;内边距:18px;下外边距:16px;}
-.项 h3{下边距:8px;颜色:#222;}
-.项 p{颜色:#555;下边距:12px;行高:1.6;}
-.下载按钮{内边距:7像素 16像素;背景颜色:#1677ff;文字颜色:#fff;文本装饰:无;圆角半径:5像素;}
-.download-btn:hover{background:#0958d9;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>妙匠工具 - 电脑工具分享站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', system-ui, sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        
+        .tool-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .wave-bg {
+            background: linear-gradient(45deg, #f8fafc, #e0f2fe);
+        }
+    </style>
 </head>
-<body>
-<h1>纯净电脑软件工具箱</h1>
+<body class="bg-zinc-50 text-zinc-800">
+    <!-- 导航栏 -->
+    <nav class="bg-white border-b border-zinc-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-lg">妙</div>
+                <div>
+                    <span class="text-2xl font-bold tracking-tight">妙匠工具</span>
+                    <p class="text-xs text-zinc-500 -mt-1">电脑工具分享站</p >
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href=" " onclick="navigateTo('home')" class="nav-link text-zinc-700 hover:text-blue-600">首页</a >
+                <a href="#" onclick="navigateTo('categories')" class="nav-link text-zinc-700 hover:text-blue-600">分类</a >
+                <a href="#" onclick="navigateTo('tools')" class="nav-link text-zinc-700 hover:text-blue-600">所有工具</a >
+                <a href="#" onclick="navigateTo('submit')" class="nav-link text-zinc-700 hover:text-blue-600">提交工具</a >
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="relative w-72 hidden md:block">
+                    <input 
+                        id="nav-search"
+                        type="text" 
+                        占位符="搜索工具..." 
+                        class="w-full bg-zinc-100 border border-zinc-300 rounded-full py-2.5 pl-11 pr-4 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                        onkeyup="如果(事件.键 === '回车') 搜索工具(此.值)">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3 text-zinc-400"></i>
+                </div>
+                <按钮 onclick="切换暗黑模式()" 
+                        类="w-10 h-10 flex items-center justify-center text-zinc-600 hover:text-zinc-900 rounded-xl hover:bg-zinc-100">
+                    <i class="fa-solid fa-moon text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-<!-- ==========现有软件，不要删除 ========== -->
-<div class="item">
-<h3>Bandizip 解压软件（绿色无广告）</h3>
-<p>全格式压缩解压，免安装版，无捆绑弹窗</p >
-一键下载</
-</div>
-
-<div class="item">
-<h3>ShareX 开源截图录屏工具</h3>
-<p>免费开源，长截图、区域截屏、屏幕录制全能</p >
-一键下载</
-</div>
-
-<!-- ==========【新增软件专用模板，以后加软件就整段复制下面DIV】 ==========
-<div class="item">
-<h3>软件名称</h3>
-<p>软件功能简介</p >
-<a class="download-btn" href="粘贴夸克无提取码分享链接" target="_blank">一键下载</a >
-</div>
--->
-
-</body>
-</html>
+    <!-- 英雄 -->
+    <header id="home" class="hero-bg text-white py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(at_top_right,#ffffff20_0%,transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto px-6 relative">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1
